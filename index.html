@@ -6,6 +6,9 @@
     <link rel="shortcut icon" href="sheev.jpg" type="image/x-icon">
     <link href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css" rel="stylesheet">
     <style>
+        @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+        .fade-in { animation: fade-in 0.25s; }
+
         a { color: rgb(154, 154, 206); }
         hr { border: 0; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #414141; }
         input, textarea { background-color: #131313; color: rgb(154, 154, 206); }
@@ -27,7 +30,7 @@
     <title>sheev.net</title>
 </head>
 <body>
-    <main class="max-width-3 mx-auto p2 clearfix">
+    <main class="max-width-3 mx-auto p2 clearfix fade-in">
         <header>
             <h1>sheev.net</h1>
             <img src="sheev.jpg" class="rounded fit" alt="picture of sheev palpatine smiling" title="sheev"></img>
