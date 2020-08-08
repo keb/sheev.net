@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="sheev.jpg" type="image/x-icon">
     <link href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css" rel="stylesheet">
     <style>
         a { color: rgb(154, 154, 206); }
         hr { border: 0; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #414141; }
+        input, textarea { background-color: #131313; color: rgb(154, 154, 206); }
 
         body {
             background-color: #131313;
@@ -25,22 +27,45 @@
     <title>sheev.net</title>
 </head>
 <body>
-    <main class="max-width-3 mx-auto p2">
+    <main class="max-width-3 mx-auto p2 clearfix">
         <header>
             <h1>sheev.net</h1>
-            <img src="sheev.jpg" alt="picture of sheev palpatine smiling" title="sheev" style="max-width:250px;"></img>
-	</header>
+            <img src="sheev.jpg" class="rounded fit" alt="picture of sheev palpatine smiling" title="sheev"></img>
+        </header>
 
-        <ul>
-            <li>
-                <a href="https://mumble.ninjabong.com">mumble.ninjabong.com</a>
-                <em>(mumble, port: 42069)</em>
-            </li>
+        <ul class="p1">
             <li>
                 <a href="https://discord.gg/Hrqrna3">discord.gg/Hrqrna3</a>
-                <em>(discord)</em>
+                <ul class="p1"><li><em>sheev's discord</em></li></ul>
+            </li>
+            <li>
+                <a href="https://mumble.ninjabong.com">mumble.ninjabong.com</a>
+                <ul class="p1"><li><em>port: 42069</em></li></ul>
             </li>
         </ul>
+
+        <hr>
+
+        <div>
+            <h2>leave a message for sheev</h2>
+            <p>
+                <label for="name-box">name</label><br>
+                <input name="name-box" id="name-box" type="text">
+            </p>
+            <p>
+                <label for="sheev-comment-box">note</label><br>
+                <textarea name="sheev-comment-box" id="sheev-comment-box" cols="25" rows="3"></textarea>
+            </p>
+            
+            <p>
+                <button id="comment-submit-btn">pray to sheev</button>
+            </p>
+            
+            <div id="alert" class="bold display-none"></div>
+
+            <h2>see what others are saying about sheev</h2>
+            <div id="quotes"></div>
+        </div>
     </main>
     <script defer src="app.js"></script>
 </body>
