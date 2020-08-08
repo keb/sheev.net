@@ -9,6 +9,7 @@
     }
 
     let foo = await get('/.netlify/functions/notes');
-    const json = await foo.json();
-    console.log(json);
+    console.log(foo);
+    // const json = await foo.json();
+    // console.log(json);
 })();
