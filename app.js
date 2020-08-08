@@ -1,5 +1,5 @@
 (async function() {
-    function get(url, params) {
+    function get(url, params = {}) {
         const query = Object.entries(params)
             .map(a => encodeURIComponent(a[0]) + '=' + encodeURIComponent(a[1]))
             .join('&')
