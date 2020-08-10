@@ -1,22 +1,39 @@
 (async function() {
     const db = 'https://textdb.dev/api/data';
-    const key = '7e9c4a24-3405-434f-aee7-f95259e145e7';
-    const endpoint = `${db}/${key}`;
+    const prod_key = '7e9c4a24-3405-434f-aee7-f95259e145e7';
+    const dev_key = '6254dee0-0c77-4d0d-bdaf-74160c52b0bb';
+    const endpoint = `${db}/${prod_key}`;
 
     // els
-    const nameBox = document.querySelector('#name-box');
-    const commentBox = document.querySelector('#sheev-comment-box');
-    const submitBtn  = document.querySelector('#comment-submit-btn');
-    const alertBox = document.querySelector('#alert');
-    const quotes = document.querySelector('#quotes');
+    const app = q('#app');
+    const nameBox = q('#name-box');
+    const commentBox = q('#sheev-comment-box');
+    const submitBtn  = q('#comment-submit-btn');
+    const alertBox = q('#alert');
+    const quotes = q('#quotes');
 
     // global state
     const state = { notes: [], alert: '' };
+    const actions = {
+        setAlert: alert => state.alert = alert,
+        setNotes: notes => state.notes = notes,
+        addNote: note => state.notes = [...note, state.notes],
+    };
+
+    const render = state => app.innerHTML = `
+        <div>
+            <p>
+                your name here: ${state.name}
+            </p>
+        </div>
+    `;
+
+    render({ name: 'kevin' });
 
     // oninit
-    const data = await getNotes();
-    state.notes = data.notes;
-    renderNotes(data.notes);
+    // const data = await getNotes();
+    // state.notes = data.notes;
+    // renderNotes(data.notes);
 
     /**
     * events
@@ -106,6 +123,10 @@
     /**
     * utils
     **/
+    function q(query) {
+        return document.querySelector(query);
+    }
+
     function get(url, params = {}) {
         const query = Object.entries(params)
             .map(a => encodeURIComponent(a[0]) + '=' + encodeURIComponent(a[1]))
