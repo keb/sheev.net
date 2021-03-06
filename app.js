@@ -2,13 +2,15 @@
     const db = 'https://textdb.dev/api/data';
     const key = '7e9c4a24-3405-434f-aee7-f95259e145e7';
     const endpoint = `${db}/${key}`;
+    const q = s => document.querySelector(s);
 
     // els
-    const nameBox = document.querySelector('#name-box');
-    const commentBox = document.querySelector('#sheev-comment-box');
-    const submitBtn  = document.querySelector('#comment-submit-btn');
-    const alertBox = document.querySelector('#alert');
-    const quotes = document.querySelector('#quotes');
+    const nameBox = q('#name-box');
+    const commentBox = q('#sheev-comment-box');
+    const submitBtn  = q('#comment-submit-btn');
+    const alertBox = q('#alert');
+    const quotes = q('#quotes');
+    const sheevForm = q('#sheev-form');
 
     // global state
     const state = { notes: [], alert: '' };
@@ -22,7 +24,7 @@
     * events
     **/
     submitBtn.addEventListener('click', async function(e) {
-        e.preventDefault();
+        // e.preventDefault();
 
         if (nameBox.value.trim() !== '' && commentBox.value.trim() !== '') {
             const name = nameBox.value;
@@ -40,6 +42,10 @@
 
             showAlert();
         }
+    });
+
+    sheevForm.addEventListener('submit', function(e) {
+        e.preventDefault();
     });
 
     /**
